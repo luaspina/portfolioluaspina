@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luana Spina — PM Criativa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAF8F4;
+    --ink: #1C1A17;
+    --terracotta: #C75D3D;
+    --line: #D8D2C5;
+    --olive: #6B6F5C;
+    --paper-warm: #F1ECE2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--olive);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 18px;
+    height: 1px;
+    background: var(--olive);
+    display: inline-block;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 80px;
+  }
+
+  .hero-top .name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--ink);
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 7vw, 84px);
+    max-width: 780px;
+    margin-top: 24px;
+    opacity: 0;
+    transform: translateY(14px);
+    animation: rise 0.9s 0.1s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .hero-sub {
+    margin-top: 28px;
+    max-width: 560px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #4A463E;
+    opacity: 0;
+    animation: rise 0.9s 0.3s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+
+  .hero-meta {
+    margin-top: 48px;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: rise 0.9s 0.5s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+
+  .hero-meta .item .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--olive);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-meta .item .val {
+    font-size: 15px;
+    margin-top: 4px;
+  }
+
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section {
+    padding: 120px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .section-head {
+    margin-bottom: 56px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(30px, 4vw, 44px);
+    margin-top: 18px;
+    max-width: 600px;
+  }
+
+  /* ---------- SOBRE ---------- */
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 64px;
+  }
+
+  .sobre-text p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #3A362F;
+    margin-bottom: 20px;
+  }
+
+  .sobre-text strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .timeline-mini {
+    border-left: 1px solid var(--line);
+    padding-left: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  .timeline-mini .t-item {
+    position: relative;
+  }
+
+  .timeline-mini .t-item::before {
+    content: '';
+    position: absolute;
+    left: -33px;
+    top: 5px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--terracotta);
+  }
+
+  .timeline-mini .t-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--olive);
+  }
+
+  .timeline-mini .t-role {
+    font-size: 15px;
+    margin-top: 3px;
+    font-weight: 500;
+  }
+
+  .timeline-mini .t-org {
+    font-size: 14px;
+    color: #6B675E;
+  }
+
+  /* ---------- COMO TRABALHO (signature) ---------- */
+  .metodo-flow {
+    margin-top: 50px;
+    position: relative;
+  }
+
+  .metodo-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: -10px;
+  }
+
+  .metodo-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .metodo-step .m-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--terracotta);
+  }
+
+  .metodo-step h3 {
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: 500;
+  }
+
+  .metodo-step p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: #545046;
+    margin-top: 10px;
+  }
+
+  /* ---------- CASES ---------- */
+  .case-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .case {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    padding: 44px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .case:first-child {
+    border-top: none;
+  }
+
+  .case-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--olive);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding-top: 4px;
+  }
+
+  .case-body h3 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .case-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    margin-bottom: 14px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .case-row .case-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--olive);
+    padding-top: 2px;
+  }
+
+  .case-row .case-val {
+    color: #3A362F;
+  }
+
+  .case-result {
+    margin-top: 18px;
+    padding: 16px 20px;
+    background: var(--paper-warm);
+    border-left: 2px solid var(--terracotta);
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+
+  /* ---------- MARCAS ---------- */
+  .marcas-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 12px;
+  }
+
+  .marca-chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    padding: 9px 16px;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    color: #4A463E;
+  }
+
+  /* ---------- CONTATO ---------- */
+  .contato {
+    border-top: 1px solid var(--line);
+    padding: 110px 0 80px;
+  }
+
+  .contato h2 {
+    font-size: clamp(34px, 5vw, 56px);
+    max-width: 700px;
+  }
+
+  .contato-links {
+    margin-top: 44px;
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+  }
+
+  .contato-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 3px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .contato-links a:hover {
+    color: var(--terracotta);
+    border-color: var(--terracotta);
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px 0 50px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--olive);
+  }
+
+  /* ---------- REVEAL ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s cubic-bezier(.2,.8,.2,1), transform 0.7s cubic-bezier(.2,.8,.2,1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero h1, .hero-sub, .hero-meta { animation: none !important; opacity: 1 !important; transform: none !important; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 760px) {
+    .wrap { padding: 0 22px; }
+    .hero { min-height: auto; padding-top: 40px; }
+    .hero-top { margin-bottom: 50px; }
+    section { padding: 80px 0; }
+    .sobre-grid { grid-template-columns: 1fr; gap: 40px; }
+    .metodo-steps { grid-template-columns: 1fr; gap: 32px; }
+    .case { grid-template-columns: 1fr; gap: 14px; }
+    .case-row { grid-template-columns: 1fr; gap: 4px; }
+    .hero-meta { gap: 28px; }
+    .contato-links { flex-direction: column; gap: 18px; }
+  }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--terracotta);
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" style="border-top:none; padding-top: 50px;">
+    <div class="hero-top">
+      <span class="name">LUANA SPINA</span>
+      <span class="name">SÃO PAULO, BR</span>
+    </div>
+    <h1>Estruturo, conecto<br>e transformo planos<br>em <em>entregas</em>.</h1>
+    <p class="hero-sub">10 anos de experiência, formada em Design. Estruturo processos criativos, organizo equipes e destravo entregas para agências, marcas e times que precisam de ordem sem perder velocidade.</p>
+    <div class="hero-meta">
+      <div class="item">
+        <div class="label">Atuação</div>
+        <div class="val">Freelance / PJ · CLT</div>
+      </div>
+      <div class="item">
+        <div class="label">Foco</div>
+        <div class="val">Creative Ops & Gestão de Projetos</div>
+      </div>
+      <div class="item">
+        <div class="label">Background</div>
+        <div class="val">Design → Direção de Arte → Gestão</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="reveal" id="sobre">
+    <div class="section-head">
+      <span class="eyebrow">Sobre</span>
+      <h2>Comecei desenhando peças.<br>Hoje, desenho processos.</h2>
+    </div>
+    <div class="sobre-grid">
+      <div class="sobre-text">
+        <p>Minha trajetória começou no <strong>design e direção de arte</strong>, e isso muda a forma como eu giro um projeto hoje. Ter passado pela criação me deu uma visão estratégica sobre método, qualidade de entrega e, principalmente, sobre como times criativos realmente trabalham.</p>
+        <p>Nos últimos 10 anos, migrei naturalmente para posições de liderança operacional, acompanhando campanhas integradas, projetos digitais, branding e entregas multidisciplinares para marcas como <strong>Meta, Nestlé, Wella, Coty, Neutrogena, Johnson's Baby e Listerine</strong>.</p>
+        <p>Hoje meu papel é conectar <strong>pessoas, processo e estratégia</strong> para que o trabalho aconteça de forma organizada e sem fricção entre atendimento e criação. Sempre em expansão, participando de palestras, cursos de extensão como o de UX Digital pela PUC e metodologias ágeis, e em outubro inicio o MBA em Gestão de Negócios Digitais e Inteligência Artificial.</p>
+      </div>
+      <div class="timeline-mini">
+        <div class="t-item">
+          <div class="t-year">2013 — 2018</div>
+          <div class="t-role">Diretora Criativa</div>
+          <div class="t-org">Agência Duet</div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2019 — 2021</div>
+          <div class="t-role">Gerente de Projetos Pleno</div>
+          <div class="t-org">Lotus Yang</div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2021 — atual</div>
+          <div class="t-role">Senior Marketing PM</div>
+          <div class="t-org">Remix</div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">out. 2026</div>
+          <div class="t-role">MBA Gestão Digital & IA</div>
+          <div class="t-org">início em outubro</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO TRABALHO -->
+  <section class="reveal" id="metodo">
+    <div class="section-head">
+      <span class="eyebrow">Como trabalho</span>
+      <h2>Todo projeto tem uma linha. Minha função é encontrá-la.</h2>
+    </div>
+
+    <div class="metodo-flow">
+      <svg class="metodo-svg" viewBox="0 0 900 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10,50 C 60,15 100,62 150,30 C 190,8 230,55 270,25 L 290,20"
+              fill="none" stroke="#D8D2C5" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M300,35 L 600,35"
+              fill="none" stroke="#C75D3D" stroke-width="1.5" stroke-dasharray="2 7" stroke-linecap="round"/>
+        <path d="M610,35 L 890,35"
+              fill="none" stroke="#1C1A17" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <div class="metodo-steps">
+        <div class="metodo-step">
+          <div class="m-eyebrow">01 · Diagnóstico</div>
+          <h3>Entender o momento do projeto</h3>
+          <p>Mapeio se o time precisa de estrutura nova ou só de mais um braço para dar conta do volume. Converso com quem está na ponta, não só com quem decide.</p>
+        </div>
+        <div class="metodo-step">
+          <div class="m-eyebrow">02 · Estrutura</div>
+          <h3>Construir o fluxo único</h3>
+          <p>Documento o caminho que todo projeto vai seguir, do briefing à aprovação e produção, e defino um canal só de comunicação.</p>
+        </div>
+        <div class="metodo-step">
+          <div class="m-eyebrow">03 · Ritmo</div>
+          <h3>Instalar o acompanhamento</h3>
+          <p>Crio rituais e ferramentas de controle (planilhas, SLAs, reuniões curtas) para que o time saiba o que fazer sem precisar me perguntar.</p>
+        </div>
+        <div class="metodo-step">
+          <div class="m-eyebrow">04 · Entrega</div>
+          <h3>Fazer o job e seguir</h3>
+          <p>Se o time já roda bem, entro só para reforçar a entrega. Se faltava processo, deixo rodando sem mim. Nos dois casos, saio quando o trabalho está feito.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section class="reveal" id="cases">
+    <div class="section-head">
+      <span class="eyebrow">Cases</span>
+      <h2>Três situações, três formas de entregar.</h2>
+    </div>
+
+    <div class="case-list">
+      <div class="case">
+        <div class="case-tag">Operação interna</div>
+        <div class="case-body">
+          <h3>Zerar horas extras sem perder prazo</h3>
+          <div class="case-row">
+            <span class="case-label">Contexto</span>
+            <span class="case-val">As horas registradas pelo time de criação não correspondiam ao que era de fato entregue, resultando em prazos perdidos em algumas frentes e excesso de hora extra em outras.</span>
+          </div>
+          <div class="case-row">
+            <span class="case-label">O que fiz</span>
+            <span class="case-val">Criei uma planilha de acompanhamento diário com SLA por demanda, alimentada por mim e consultada pelo time inteiro, dando visibilidade real do que estava em aberto e da capacidade de cada pessoa.</span>
+          </div>
+          <div class="case-result">
+            <strong>Resultado:</strong> horas extras reduzidas a praticamente zero, entregas dentro do prazo e tempo de produção finalmente alinhado ao que era de fato produzido.
+          </div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-tag">Multi-frente · Latam</div>
+        <div class="case-body">
+          <h3>Transição Facebook → Meta, Programa PME Latam</h3>
+          <div class="case-row">
+            <span class="case-label">Contexto</span>
+            <span class="case-val">Como PM da agência, coordenei a entrega para o cliente Meta em diversas frentes simultâneas, entre conteúdo, campanhas, materiais de comunicação e suporte a produções, incluindo acompanhamento de gravações.</span>
+          </div>
+          <div class="case-row">
+            <span class="case-label">Escopo</span>
+            <span class="case-val">Três mercados (Brasil, México e Argentina), com gestão de orçamento de tradução e validação de material final por país, fazendo a localização de imagens, símbolos e idioma mantendo a mesma cartela visual de base.</span>
+          </div>
+          <div class="case-row">
+            <span class="case-label">Desafio</span>
+            <span class="case-val">Alto volume de entregas, múltiplos perfis de stakeholder para alinhar e prazos apertados, sem abrir mão da qualidade da localização em cada país.</span>
+          </div>
+          <div class="case-result">
+            <strong>Resultado:</strong> entregas localizadas para os três mercados dentro do prazo, com o time criativo sustentando o volume sem comprometer a consistência da marca.
+          </div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-tag">Reestruturação · 6 meses</div>
+        <div class="case-body">
+          <h3>Um fluxo só para atendimento e criação</h3>
+          <div class="case-row">
+            <span class="case-label">Contexto</span>
+            <span class="case-val">Fui contratada em uma agência onde cada atendimento seguia um fluxo próprio: briefings verbais ou por WhatsApp, sem canal oficial, retrabalho constante e atrito recorrente entre atendimento e criação.</span>
+          </div>
+          <div class="case-row">
+            <span class="case-label">O que fiz</span>
+            <span class="case-val">Desenhei um fluxo documentado único, criei um template de briefing padrão e implementei um ritual de reunião para alinhar as duas pontas antes da produção começar.</span>
+          </div>
+          <div class="case-result">
+            <strong>Resultado:</strong> processo rodando e adotado pela maior parte do time em 6 meses, com a clareza de que parte da resistência restante já era uma questão cultural/RH, fora do escopo de processo.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARCAS -->
+  <section class="reveal" id="marcas">
+    <div class="section-head">
+      <span class="eyebrow">Marcas com que trabalhei</span>
+      <h2>Contexto, não detalhe.</h2>
+    </div>
+    <div class="marcas-list">
+      <span class="marca-chip">Meta</span>
+      <span class="marca-chip">Wella Company</span>
+      <span class="marca-chip">Coty</span>
+      <span class="marca-chip">Neutrogena</span>
+      <span class="marca-chip">Johnson's Baby</span>
+      <span class="marca-chip">Listerine</span>
+      <span class="marca-chip">Nestlé Brasil</span>
+      <span class="marca-chip">Raízen</span>
+      <span class="marca-chip">Fiat</span>
+      <span class="marca-chip">Chevrolet</span>
+      <span class="marca-chip">John Deere</span>
+      <span class="marca-chip">SKF</span>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="contato reveal" id="contato">
+    <span class="eyebrow">Vamos conversar</span>
+    <h2>Tem um projeto te esperando,<br>seja para estruturar ou só entregar?</h2>
+    <div class="contato-links">
+      <a href="mailto:luacspina@gmail.com">luacspina@gmail.com</a>
+      <a href="tel:+5511960662227">+55 11 96066-2227</a>
+      <a href="https://linkedin.com/in/luaoak" target="_blank" rel="noopener">linkedin.com/in/luaoak</a>
+    </div>
+  </section>
+
+  <footer>LUANA SPINA — PROJECT MANAGEMENT & CREATIVE OPERATIONS</footer>
+
+</div>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
